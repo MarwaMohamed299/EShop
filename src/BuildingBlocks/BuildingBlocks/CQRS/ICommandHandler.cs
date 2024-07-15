@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace BuildingBlocks.CQRS
 {
-    public interface IQuery : IQuery<Unit>
-    {
-    }
-    public interface IQuery<out TResponse> : IRequest<TResponse>
+    public interface IQueryHandler<in TQuery, TResponse>
+     : IRequestHandler<TQuery, TResponse>
+     where TQuery : IQuery<TResponse>
+     where TResponse : notnull
     {
     }
 }
