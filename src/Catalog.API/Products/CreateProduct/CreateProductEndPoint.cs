@@ -14,7 +14,7 @@
                     var command = request.Adapt<CreateProductCommmand>();
 
                     var result = await sender.Send(command);
-
+                     
                     var response = result.Adapt<CreateProductResponse>(); 
 
                     return Results.Created($"/products/{response.Id}" , response);
