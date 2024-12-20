@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Carter" Version="7.2.0" />
-    <PackageReference Include="Marten" Version="7.5.0" />
+    <PackageReference Include="Marten" Version="7.34.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
