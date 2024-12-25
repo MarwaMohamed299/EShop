@@ -9,7 +9,8 @@ builder.Services.AddMediatR(config =>
 });
 builder.Services.AddMarten(opts =>
 {
-    opts.Connection(builder.Configuration.GetConnectionString("DataBase")!);
+    var ConnectionString = builder.Configuration.GetConnectionString("DataBase");
+    opts.Connection(ConnectionString!);
 }).UseLightweightSessions();  //Lightweight sessions for performane in CRUD
 
 #region Config
