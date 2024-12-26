@@ -14,7 +14,6 @@ namespace Catalog.API.Products.GetProductById
 
                 var response = new GetProductByIdResponse(result.product);
 
-
                 return Results.Ok(response);
             })
             .WithName("GetProductById")
