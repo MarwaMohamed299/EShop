@@ -20,18 +20,11 @@
     #endregion
 
     #region Handler
-    internal class CreateProductCommandHandler (IDocumentSession session , IValidator<CreateProductCommmand> validator)
+    internal class CreateProductCommandHandler (IDocumentSession session )
         : ICommandHandler<CreateProductCommmand, CreateProductResult>
     {
         public async Task<CreateProductResult> Handle(CreateProductCommmand command, CancellationToken cancellationToken)
         {
-            var result = await validator.ValidateAsync(command , cancellationToken);
-
-            var errors = result.Errors.Select(x => x.ErrorMessage).ToList();
-            if (errors.Any())
-            {
-                throw new ValidationException(errors.FirstOrDefault());
-            }
 
             var product = new Product()
             {  
