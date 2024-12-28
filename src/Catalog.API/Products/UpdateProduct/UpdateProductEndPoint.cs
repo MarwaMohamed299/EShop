@@ -9,7 +9,6 @@ public class UpdateProductEndpoint : ICarterModule
     {
         app.MapPut("/products", async (UpdateProductRequest request, ISender sender) =>
         {
-            // Use constructor with required parameters
             var command = new UpdateProductCommand(
                 request.Id,
                 request.Name,
