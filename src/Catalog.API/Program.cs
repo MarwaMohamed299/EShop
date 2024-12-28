@@ -1,7 +1,6 @@
-var builder = WebApplication.CreateBuilder(args);
+ var builder = WebApplication.CreateBuilder(args);
 
-
-// Add services to the container.
+#region Services
 builder.Services.AddCarter();
 builder.Services.AddMediatR(config =>
 {
@@ -13,16 +12,20 @@ builder.Services.AddMarten(opts =>
     opts.Connection(ConnectionString!);
 }).UseLightweightSessions();  //Lightweight sessions for performane in CRUD
 
+builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
+#endregion
+
 #region Config
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 #endregion
 
+#region Middlewares
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
 
 app.MapCarter();
 
 app.Run();
+
+#endregion
