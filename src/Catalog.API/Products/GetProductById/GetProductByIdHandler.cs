@@ -5,12 +5,11 @@ public record GetProductByIdQuery(Guid id) : IQuery<GetProductByIdResult>;
 
 public record GetProductByIdResult(Product product);
 internal class GetProductByIdHandler
-    (IDocumentSession session , ILogger<GetProductByIdResult> logger)
+    (IDocumentSession session )
     : IQueryHandler<GetProductByIdQuery, GetProductByIdResult>
 {
     public async Task<GetProductByIdResult> Handle(GetProductByIdQuery query, CancellationToken cancellationToken)
     {
-        logger.LogInformation("Get ProductByIdQueryHandler.Handle callsed with {@Query}", query);
 
         var product = await session.LoadAsync<Product>(query.id, cancellationToken);
 
