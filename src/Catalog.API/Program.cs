@@ -1,4 +1,3 @@
-using BuildingBlocks.Exceptions.Handler;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +20,11 @@ builder.Services.AddMarten(opts =>
     var ConnectionString = builder.Configuration.GetConnectionString("DataBase");
     opts.Connection(ConnectionString!);
 }).UseLightweightSessions();  //Lightweight sessions for performane in CRUD
+
+if(builder.Environment.IsDevelopment())
+{
+    builder.Services.InitializeMartenWith<CatalogInitialData>();
+}
 
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
