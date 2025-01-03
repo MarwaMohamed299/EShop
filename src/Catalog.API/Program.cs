@@ -19,6 +19,7 @@ builder.Services.AddMarten(opts =>
 {
     var ConnectionString = builder.Configuration.GetConnectionString("DataBase");
     opts.Connection(ConnectionString!);
+    opts.AutoCreateSchemaObjects = Weasel.Core.AutoCreate.All;
 }).UseLightweightSessions();  //Lightweight sessions for performane in CRUD
 
 if(builder.Environment.IsDevelopment())
@@ -29,6 +30,8 @@ if(builder.Environment.IsDevelopment())
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
 #endregion
+
+
 
 #region Config
 builder.Services.AddControllers();
