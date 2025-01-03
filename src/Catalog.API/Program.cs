@@ -15,11 +15,11 @@ builder.Services.AddMediatR(config =>
 
 builder.Services.AddValidatorsFromAssembly(assemly);
 
+var ConnectionString = builder.Configuration.GetConnectionString("DataBase");
+
 builder.Services.AddMarten(opts =>
 {
-    var ConnectionString = builder.Configuration.GetConnectionString("DataBase");
     opts.Connection(ConnectionString!);
-    opts.AutoCreateSchemaObjects = Weasel.Core.AutoCreate.All;
 }).UseLightweightSessions();  //Lightweight sessions for performane in CRUD
 
 if(builder.Environment.IsDevelopment())
@@ -37,14 +37,25 @@ builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHealthChecks()
+    .AddNpgSql(ConnectionString!);
+
 #endregion
 
 #region Middlewares
+
 var app = builder.Build();
 
 app.MapCarter();
 
 app.UseExceptionHandler(options => { });
+
+app.UseHealthChecks("/health",
+    new HealthCheckOptions
+    {
+        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+
+    });
 
 app.Run();
 
