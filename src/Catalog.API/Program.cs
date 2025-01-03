@@ -1,4 +1,3 @@
-
 var builder = WebApplication.CreateBuilder(args);
 
 #region Services
@@ -31,15 +30,12 @@ builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
 #endregion
 
-
-
 #region Config
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks()
     .AddNpgSql(ConnectionString!);
-
 #endregion
 
 #region Middlewares
