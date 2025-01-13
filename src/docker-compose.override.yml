@@ -1,4 +1,4 @@
- # version: '3.4'
+version: '3.4'
 
 services:
   catalogdb:
@@ -24,6 +24,12 @@ services:
         - "5433:5432"
     volumes:
       - postgres_basket:/var/lib/postgresql/data/ 
+
+  distributedcache:
+    container_name: distributedcache
+    restart: always
+    ports:
+      - "6379:6379" 
 
   catalog.api:
     environment:
