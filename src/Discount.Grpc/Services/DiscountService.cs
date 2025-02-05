@@ -11,24 +11,52 @@ namespace Discount.Grpc.Services
     {
         public override async Task<CouponModel> GetDiscount(GetDiscountRequest request, ServerCallContext context)
         {
-            var coupon = await dbContext
-            .Coupons
-            .FirstOrDefaultAsync(x => x.ProductName == request.ProductName);
+            //var coupon = await dbContext
+            //.Coupons
+            //.FirstOrDefaultAsync(x => x.ProductName == request.ProductName);
 
-            if (coupon is null)
-                coupon = new Coupon { ProductName = "No Discount", Amount = 0, Description = "No Discount Desc" };
+            //if (coupon is null)
+            //    coupon = new Coupon { ProductName = "No Discount", Amount = 0, Description = "No Discount Desc" };
 
-            logger.LogInformation("Discount is retrieved for ProductName : {productName}, Amount : {amount}", coupon.ProductName, coupon.Amount);
+            //logger.LogInformation("Discount is retrieved for ProductName : {productName}, Amount : {amount}", coupon.ProductName, coupon.Amount);
 
-            var couponModel = new CouponModel
+            //var couponModel = new CouponModel
+            //{
+            //    Id = coupon.Id,
+            //    ProductName = coupon.ProductName,
+            //    Amount = coupon.Amount,
+            //    Description = coupon.Description,
+            //};
+
+            //return couponModel;public override async Task<GetDiscountResponse> GetDiscount(GetDiscountRequest request, ServerCallContext context)
             {
-                Id = coupon.Id,
-                ProductName = coupon.ProductName,
-                Amount = coupon.Amount,
-                Description = coupon.Description,
-            };
+                try
+                {
+                    var coupon = await dbContext
+                    .Coupons
+                    .FirstOrDefaultAsync(x => x.ProductName == request.ProductName);
 
-            return couponModel;
+                    if (coupon is null)
+                        coupon = new Coupon { ProductName = "No Discount", Amount = 0, Description = "No Discount Desc" };
+
+                    logger.LogInformation("Discount is retrieved for ProductName : {productName}, Amount : {amount}", coupon.ProductName, coupon.Amount);
+
+                    var couponModel = new CouponModel
+                    {
+                        Id = coupon.Id,
+                        ProductName = coupon.ProductName,
+                        Amount = coupon.Amount,
+                        Description = coupon.Description,
+                    };
+                    return couponModel;
+                }
+                catch (Exception ex)
+                {
+                    logger.LogError(ex, "Error fetching discount");
+                    throw new RpcException(new Status(StatusCode.Internal, "Internal server error"));
+                }
+            }
+
         }
         public override async Task<CouponModel> CreateDiscount(CreateDiscountRequest request, ServerCallContext context)
         {
