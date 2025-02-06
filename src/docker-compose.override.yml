@@ -66,7 +66,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
-      - ConnectionStrings__Database=Data Source=discountdb
+      - ConnectionStrings__Database=Data Source=discountdb 
     ports:
       - "6002:8080"
       - "6062:8081"
@@ -76,4 +76,5 @@ services:
 volumes:
   postgres_catalog:
   postgres_basket:
-  discount_data:
+
+       
