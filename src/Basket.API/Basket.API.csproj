@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="AspNetCore.HealthChecks.Redis" Version="8.0.0" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.49.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="8.0.10" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
   </ItemGroup>
@@ -27,6 +28,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BuildingBlocks\BuildingBlocks.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="..\Discount.Grpc\Protos\discount.proto" GrpcServices="Client">
+      <Link>Protos\discount.proto</Link>
+    </Protobuf>
   </ItemGroup>
 
 </Project>
