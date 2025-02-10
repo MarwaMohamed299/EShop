@@ -38,6 +38,7 @@ A practical service designed with .NET 8 for managing shopping baskets, featurin
 - **Minimal APIs:** Keeps things straightforward.
 
 ---
+
 ## **Discount Microservice**
 A high-performance gRPC service built with .NET 8 for managing product discounts.
 
@@ -54,4 +55,24 @@ A high-performance gRPC service built with .NET 8 for managing product discounts
 - Automated database migrations on startup
 - **Docker:** Fully containerized for smooth integration
 
+---
+
+## **Ordering Microservice**
+A robust service implementing Domain-Driven Design (DDD), CQRS, and Clean Architecture best practices.
+
+### **Core Features:**
+- **CQRS Implementation:** Developed using MediatR for handling commands and queries efficiently.
+- **FluentValidation:** Ensures clean and maintainable validation logic.
+- **Mapster:** Provides high-performance object mapping.
+- **Domain Events & Integration Events:** Supports event-driven communication within and across services.
+- **Entity Framework Core:** Utilizes Code-First approach for database management with automatic migrations.
+- **RabbitMQ Integration:** Consumes the `BasketCheckout` event queue using MassTransit-RabbitMQ for reliable event-driven workflows.
+- **SQL Server Database Connection:** Fully containerized with support for seamless database setup.
+
+### **Extras:**
+- Logging
+- Global error handling
+- Health checks
+- Automated database migrations on startup
+- **Docker:** Fully containerized for easy deployment
 
