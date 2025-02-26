@@ -8,7 +8,8 @@
 
             var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
-            context.Database.MigrateAsync().GetAwaiter().GetResult();
+            await context.Database.MigrateAsync();
+
 
             await SeedAsync(context);
         }

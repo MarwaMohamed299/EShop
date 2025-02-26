@@ -7,3 +7,4 @@ global using Microsoft.AspNetCore.Builder;
 global using Microsoft.Extensions.DependencyInjection;
 global using Ordering.Infrastructure.Data;
 global using Ordering.Infrastructure.Data.Extensions;
+global using Ordering.Domain.Abstractions;

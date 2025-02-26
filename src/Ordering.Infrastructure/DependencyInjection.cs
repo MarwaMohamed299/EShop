@@ -1,6 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Ordering.Infrastructure.Data;
+﻿using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.Extensions.Configuration;
 
 namespace Ordering.Infrastructure
 {
@@ -10,7 +9,10 @@ namespace Ordering.Infrastructure
         {
             var connectionString = configuration.GetConnectionString("DataBase");
 
-            services.AddDbContext<AppDbContext>(op => op.UseSqlServer(connectionString));
+            services.AddDbContext<AppDbContext>((sp, options) =>
+                options.UseSqlServer(connectionString , sqlOptions =>
+                    sqlOptions.EnableRetryOnFailure())
+                       .AddInterceptors(sp.GetServices<ISaveChangesInterceptor>()));
 
             return services;
         }
