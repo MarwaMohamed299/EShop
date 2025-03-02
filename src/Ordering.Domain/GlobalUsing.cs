@@ -4,3 +4,6 @@ global using Ordering.Domain.ValueObjects;
 global using Ordering.Domain.Models;
 global using Ordering.Domain.Exceptions;
 global using Ordering.Domain.Events;
+global using MediatR;
+using Microsoft.Extensions;
+using Ordering.Domain.Events;
