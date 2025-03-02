@@ -14,6 +14,7 @@ builder.Services
     .AddApiServices();
 
 var app = builder.Build();
+Console.WriteLine("Test");
 
 // Configure Http Requests
 app.UseApiServices();
