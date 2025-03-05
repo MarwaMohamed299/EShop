@@ -1,4 +1,6 @@
-﻿using Carter;
+﻿using BuildingBlocks.Behaviors;
+using Carter;
+using System.Reflection;
 
 namespace Ordering.API
 {
@@ -7,6 +9,7 @@ namespace Ordering.API
         public static IServiceCollection AddApiServices(this IServiceCollection services)
         {
             services.AddCarter();
+
             return services;
         }
 

@@ -1,6 +1,4 @@
-﻿
-
-using Ordering.Application.Dtos;
+﻿using Ordering.Application.Dtos;
 using Ordering.Application.Orders.Commands.CreateOrder;
 
 namespace Ordering.API.EndPoints

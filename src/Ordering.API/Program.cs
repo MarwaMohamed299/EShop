@@ -9,12 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add Services to container
 
 builder.Services
-    .AddApplicationServices()
+    .AddApplicationServices(builder.Configuration)
     .AddInfrastructureServices(builder.Configuration)
     .AddApiServices();
 
+
 var app = builder.Build();
-Console.WriteLine("Test");
 
 // Configure Http Requests
 app.UseApiServices();
