@@ -1,10 +1,4 @@
-﻿using BuildingBlocks.CQRS;
-using Microsoft.EntityFrameworkCore;
-using Ordering.Application.Data;
-using Ordering.Application.Extensions;
-using Ordering.Application.Orders.QueryHandlers.GetORderByName;
-
-namespace Ordering.Application.Orders.Queries.GetOrdersByName;
+﻿namespace Ordering.Application.Orders.Queries.GetOrdersByName;
 public class GetOrdersByNameHandler(IAppDbContext dbContext)
     : IQueryHandler<GetOrdersByNameQuery, GetOrdersByNameResult>
 {
