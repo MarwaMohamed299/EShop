@@ -6,7 +6,7 @@ namespace Ordering.API
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddApiServices(this IServiceCollection services)
+        public static IServiceCollection AddApiServices(this IServiceCollection services, ConfigurationManager configuration)
         {
             services.AddCarter();
 

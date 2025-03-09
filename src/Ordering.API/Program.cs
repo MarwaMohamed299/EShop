@@ -9,9 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add Services to container
 
 builder.Services
+    .AddApiServices(builder.Configuration)
     .AddApplicationServices(builder.Configuration)
-    .AddInfrastructureServices(builder.Configuration)
-    .AddApiServices();
+    .AddInfrastructureServices(builder.Configuration);
 
 
 var app = builder.Build();
