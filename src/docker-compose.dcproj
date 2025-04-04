@@ -4,10 +4,10 @@
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
     <DockerPublishLocally>False</DockerPublishLocally>
-    <ProjectGuid>c723ca9f-f979-4e5c-8b0c-a7513582db44</ProjectGuid>
+    <ProjectGuid>6dcbec70-4866-4297-9ad0-73928ccfa987</ProjectGuid>
     <DockerLaunchAction>None</DockerLaunchAction>
-    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>basket.api</DockerServiceName>
+    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
+    <DockerServiceName>ordering.api</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

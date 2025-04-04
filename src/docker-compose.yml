@@ -20,25 +20,25 @@ services:
     image: ${DOCKER_REGISTRY-}catalogapi
     build:
       context: .
-      dockerfile: Catalog.API/Dockerfile
+      dockerfile: Services/Catalog/Catalog.API/Dockerfile
 
   basket.api:
     image: ${DOCKER_REGISTRY-}basketapi
     build:
       context: .
-      dockerfile: Basket.API/Dockerfile
+      dockerfile: Services/Basket/Basket.API/Dockerfile
 
   discount.grpc:
     image: ${DOCKER_REGISTRY-}discountgrpc
     build:
       context: .
-      dockerfile: Discount.Grpc/Dockerfile
+      dockerfile: Services/Discount/Discount.Grpc/Dockerfile
 
   ordering.api:
     image: ${DOCKER_REGISTRY-}orderingapi
     build:
       context: .
-      dockerfile: Ordering.API/Dockerfile
+      dockerfile: Services/Ordering/Ordering.API/Dockerfile
 
   yarpapigateway:
     image: ${DOCKER_REGISTRY-}yarpapigateway
@@ -46,10 +46,18 @@ services:
       context: .
       dockerfile: ApiGateways/YarpApiGateway/Dockerfile
 
+  shopping.web:
+    image: ${DOCKER_REGISTRY-}shoppingweb
+    build:
+      context: .
+      dockerfile: WebApps/Shopping.Web/Dockerfile
 
 volumes:
   postgres_catalog:
   postgres_basket:
+
+
+
 
 
 

@@ -25,7 +25,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Container (Dockerfile)": {
+    "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
@@ -42,8 +42,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:9797",
-      "sslPort": 44324
+      "applicationUrl": "http://localhost:13997",
+      "sslPort": 44314
     }
   }
 }
